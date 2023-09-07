@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Добавить категорию</h2>
+<form method="post">
+    {{ form.hidden_tag() }}
+    <p>{{ form.name.label }}<br>
+       {{ form.name() }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}

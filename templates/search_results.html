@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Результаты поиска</h2>
+
+<!-- Если результаты поиска пусты -->
+{% if not articles %}
+    <p>По вашему запросу ничего не найдено.</p>
+{% else %}
+    {% for article in articles %}
+        <div class="article">
+            <h3><a href="{{ url_for('article_detail', article_id=article.id) }}">{{ article.title }}</a></h3>
+            <p>{{ article.content|safe }}</p>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<a href="{{ url_for('index') }}">Вернуться на главную</a>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>{{ article.title }}</h2>
+<div class="article-content">
+    {{ article.content|safe|md }}
+</div>
+<a href="{{ url_for('index') }}">Вернуться на главную</a>
+{% endblock %}
