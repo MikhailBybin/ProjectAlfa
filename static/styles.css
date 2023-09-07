@@ -6,6 +6,8 @@ pre.line-numbers {
     position: relative;
     padding-left: 3.8em;
     counter-reset: linenumber;
+    border-radius: 4px;
+    background-color: #f7f7f7
 }
 
 pre.line-numbers > code {
@@ -16,12 +18,13 @@ pre.line-numbers > code {
 
 
 .btn-copy {
+    left:10px;
     display: inline-block;
     margin-right: 10px;
     padding: 5px 10px;
     cursor: pointer;
     background-color: #f7f7f7;
-    border: 1px solid #ddd;
+    border: 1px solid #f7f7f7;
     border-radius: 4px;
     font-size: 12px;
 }

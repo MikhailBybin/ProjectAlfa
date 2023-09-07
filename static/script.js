@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     codeBlocks.forEach(function(block, index) {
         let btn = document.createElement('button');
         btn.className = 'btn-copy';
-        btn.innerHTML = 'Copy';
+        btn.innerHTML = '<i class="fa-regular fa-clipboard"></i> Copy code';
         btn.setAttribute('data-clipboard-target', '#codeblock-' + index);
         block.setAttribute('id', 'codeblock-' + index);
         block.parentNode.insertBefore(btn, block);
