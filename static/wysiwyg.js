@@ -1,11 +1,11 @@
 tinymce.init({
     selector: 'textarea',
     external_plugins: {
-        codemirror: '/static/tinymice/plugins/codemirror/plugin.js'
+        codemirror: "{{ url_for('static', filename='tinymice/plugins/codemirror/plugin.js') }}"
     },
     toolbar: 'undo redo | code',
     codemirror: {
         indentOnInit: true,
-        path: '/static/tinymice/plugins/codemirror/codemirror-4.8'
+        path: "{{ url_for('static', filename='tinymice/plugins/codemirror/codemirror-4.8/lib/') }}"
     }
 });

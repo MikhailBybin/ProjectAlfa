@@ -20,12 +20,12 @@ tinymce.PluginManager.add('codemirror', function(editor, url) {
             editor.selection.setContent('<span style="display: none;" class="CmCaReT">&#x0;</span>')
         }
 
-        var codemirrorWidth = 800
+        var codemirrorWidth = 1000
         if (editor.settings.codemirror.width) {
             codemirrorWidth = editor.settings.codemirror.width
         }
 
-        var codemirrorHeight = 550
+        var codemirrorHeight = 1000
         if (editor.settings.codemirror.width) {
             codemirrorHeight = editor.settings.codemirror.height
         }
