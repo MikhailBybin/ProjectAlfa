@@ -1,18 +1,44 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
 <h2>Редактировать статью</h2>
 
-<form method="post">
+<form method="post" id="articleForm">
     {{ form.hidden_tag() }}
+
     <p>{{ form.title.label }}<br>
        {{ form.title() }}</p>
+
     <p>{{ form.content.label }}<br>
-       {{ form.content() }}</p>
-    <p> {% include '_code_modal.html' %}</p>
+
+
+        <div id="toolbar">
+        <button class="ql-bold"></button>
+        <button class="ql-italic"></button>
+        <button class="ql-underline"></button>
+        <button class="ql-strike"></button>
+        <button class="ql-blockquote"></button>
+        <button class="ql-code-block"></button>
+        <select class="ql-header">
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+        <option value="5"></option>
+        <option value="6"></option>
+        <option selected></option>
+    </select>
+
+</div>
+
+        <div id="editor" style="height:700px;">{{ form.content.data|safe }}</div>
+        <textarea id="content" name="content" hidden></textarea>
+
+    </p>
+
     <p>{{ form.category.label }}<br>
        {{ form.category() }}</p>
     <p>{{ form.submit() }}</p>
 </form>
+
 {% endblock %}

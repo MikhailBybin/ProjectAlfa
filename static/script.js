@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Сброс кнопки через 2 секунды
         setTimeout(function() {
-            btn.innerHTML = 'Copy';
+            btn.innerHTML = '<i class="fa-regular fa-clipboard"></i> Copy code';
         }, 2000);
     });
 });
