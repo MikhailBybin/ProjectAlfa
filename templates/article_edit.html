@@ -30,7 +30,12 @@
     </select>
 
 </div>
-
+        <div id="languageButtons">
+            <button type="button" class="language-btn" data-language="language-javascript">JavaScript</button>
+            <button type="button" class="language-btn" data-language="language-python">Python</button>
+            <button type="button" class="language-btn" data-language="language-dax">DAX</button>
+            <button type="button" class="language-btn" data-language="language-sql">SQL</button>
+        </div>
         <div id="editor" style="height:700px;">{{ form.content.data|safe }}</div>
         <textarea id="content" name="content" hidden></textarea>
 

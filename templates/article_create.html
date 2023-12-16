@@ -9,27 +9,33 @@
        {{ form.title() }}</p>
 
     <p>{{ form.content.label }}<br>
-
        <textarea id="content" name="content" hidden>{{ form.content.data }}</textarea>
         <div id="toolbar">
-        <button class="ql-bold"></button>
-        <button class="ql-italic"></button>
-        <button class="ql-underline"></button>
-        <button class="ql-strike"></button>
-        <button class="ql-blockquote"></button>
-        <button class="ql-code-block"></button>
-        <select class="ql-header">
-        <option value="1"></option>
-        <option value="2"></option>
-        <option value="3"></option>
-        <option value="4"></option>
-        <option value="5"></option>
-        <option value="6"></option>
-        <option selected></option>
-    </select>
+            <button class="ql-bold"></button>
+            <button class="ql-italic"></button>
+            <button class="ql-underline"></button>
+            <button class="ql-strike"></button>
+            <button class="ql-blockquote"></button>
+            <button class="ql-code-block"></button>
+            <select class="ql-header">
+                <option value="1"></option>
+                <option value="2"></option>
+                <option value="3"></option>
+                <option value="4"></option>
+                <option value="5"></option>
+                <option value="6"></option>
+                <option selected></option>
+            </select>
+        </div>
+    <div id="languageButtons">
+        <button type="button" class="language-btn" data-language="language-javascript">JavaScript</button>
+        <button type="button" class="language-btn" data-language="language-python">Python</button>
+        <button type="button" class="language-btn" data-language="language-dax">DAX</button>
+        <button type="button" class="language-btn" data-language="language-sql">SQL</button>
+    </div>
 
-</div>
-
+<!-- Скрытое поле для хранения выбранного языка -->
+<input type="hidden" id="selectedLanguage" name="language">
        <div id="editor" style="height:700px;"></div>
     </p>
 

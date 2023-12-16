@@ -6,6 +6,7 @@ from markdown import markdown
 from markdown.extensions.codehilite import CodeHiliteExtension
 from flask import request
 from flask_migrate import Migrate
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
@@ -15,6 +16,7 @@ migrate = Migrate(app, db)
 
 with app.app_context():
     db.create_all()
+
 
 @app.route('/')
 def index():
@@ -89,6 +91,18 @@ def add_category():
         db.session.commit()
         return redirect(url_for('index'))  # или другой маршрут
     return render_template('add_category.html', form=form)
+
+
+@app.route('/filter_by_date', methods=['GET'])
+def filter_by_date():
+    date_str = request.args.get('date')
+    if date_str:
+        date = datetime.strptime(date_str, '%Y-%m-%d')
+        next_day = date + timedelta(days=1)
+        articles = Article.query.filter(Article.date_posted >= date, Article.date_posted < next_day).all()
+    else:
+        articles = Article.query.all()
+    return render_template('search_results.html', articles=articles)
 
 
 if __name__ == "__main__":
