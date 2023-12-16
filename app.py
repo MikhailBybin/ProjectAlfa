@@ -13,6 +13,8 @@ app.config['SECRET_KEY'] = 'some_secret_key'
 db.init_app(app)
 migrate = Migrate(app, db)
 
+with app.app_context():
+    db.create_all()
 
 @app.route('/')
 def index():
