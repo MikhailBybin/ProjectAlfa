@@ -30,7 +30,8 @@
         </div>
         <p class="article-date">{{ article.date_posted.strftime('%Y-%m-%d') }}</p>
         <div class="article-card-content">
-            <p>{{ article.content|md }}</p>
+                <p>{{ article.content | safe }}</p>
+            </div>
         </div>
     </div>
 {% endfor %}

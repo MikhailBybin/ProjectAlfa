@@ -28,16 +28,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
     <script src="{{ url_for('static', filename='wysiwyg.js') }}" ></script>
-    <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var articlePreviews = document.querySelectorAll('.article-preview');
-                articlePreviews.forEach(function(preview) {
-                    var content = preview.textContent;
-                    if (content.length > 100) {
-                        preview.textContent = content.substring(0, 100) + '...';
-                    }
-                });
-            });
-</script>
+    <script src="{{ url_for('static', filename='preview.js') }}" ></script>
 </body>
 </html>
