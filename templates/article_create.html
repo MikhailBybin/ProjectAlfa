@@ -28,7 +28,7 @@
     <p>{{ form.category.label }}<br>
        {{ form.category() }}</p>
     {% if current_user.is_authenticated and current_user.role.name in ['Администратор', 'Редактор'] %}
-    <a href="{{ url_for('add_category') }}">Добавить категорию</a>
+    <a href="{{ url_for('add_category') }}"><i class="fa-solid fa-plus"></i> Добавить категорию</a>
     {% endif %}
 
     <p>{{ form.submit() }}</p>

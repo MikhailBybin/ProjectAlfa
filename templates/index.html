@@ -32,7 +32,7 @@
         <div class="article-card-content">
                 <p>{{ article.trimmed_content | safe }}</p>
         {% if article.need_more_link %}
-            <a href="{{ url_for('article_detail', article_id=article.id) }}">Читать далее <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="login-buttons" href="{{ url_for('article_detail', article_id=article.id) }}">Читать далее <i class="fa-solid fa-arrow-right"></i></a>
         {% endif %}
             </div>
         </div>

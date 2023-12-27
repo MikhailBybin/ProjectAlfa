@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h2>Регистрация</h2>
+<div class="login-card">
+<h3>Регистрация</h3>
 <form method="POST" action="{{ url_for('register') }}">
     {{ form.hidden_tag() }}
     <p>
@@ -34,4 +35,5 @@
     </p>
     <p>{{ form.submit() }}</p>
 </form>
+</div>
 {% endblock %}
