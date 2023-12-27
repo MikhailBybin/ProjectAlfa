@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<div class="article-card">
 <h2>Редактировать статью</h2>
 
 <form method="post" id="articleForm">
@@ -12,31 +13,13 @@
     <p>{{ form.content.label }}<br>
 
 
-        <div id="toolbar">
-        <button class="ql-bold"></button>
-        <button class="ql-italic"></button>
-        <button class="ql-underline"></button>
-        <button class="ql-strike"></button>
-        <button class="ql-blockquote"></button>
-        <button class="ql-code-block"></button>
-        <select class="ql-header">
-        <option value="1"></option>
-        <option value="2"></option>
-        <option value="3"></option>
-        <option value="4"></option>
-        <option value="5"></option>
-        <option value="6"></option>
-        <option selected></option>
-    </select>
-
-</div>
         <div id="languageButtons">
             <button type="button" class="language-btn" data-language="language-javascript">JavaScript</button>
             <button type="button" class="language-btn" data-language="language-python">Python</button>
             <button type="button" class="language-btn" data-language="language-dax">DAX</button>
             <button type="button" class="language-btn" data-language="language-sql">SQL</button>
         </div>
-        <div id="editor" style="height:700px;">{{ form.content.data|safe }}</div>
+        <div id="editor" style="min-height:300px;">{{ form.content.data|safe }}</div>
         <textarea id="content" name="content" hidden></textarea>
 
     </p>
@@ -45,5 +28,5 @@
        {{ form.category() }}</p>
     <p>{{ form.submit() }}</p>
 </form>
-
+</div>
 {% endblock %}

@@ -1,14 +1,36 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    var toolbarOptions = [
+      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+      ['blockquote', 'code-block'],
+      ['link', 'image'],
+
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+      [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+      [{ 'direction': 'rtl' }],                         // text direction
+
+      [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+      [{ 'font': [] }],
+      [{ 'align': [] }],
+
+      ['clean']                                         // remove formatting button
+    ];
 
     // Инициализация Quill
     var quill = new Quill('#editor', {
         theme: 'snow',
         modules: {
-            toolbar: '#toolbar',
+            toolbar: toolbarOptions,
             imageResize: {}
         }
     });
+
+
+
 
     // Инициализация обработчиков событий для кнопок выбора языка
     document.querySelectorAll('.language-btn').forEach(button => {
