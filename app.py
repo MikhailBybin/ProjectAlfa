@@ -1,7 +1,6 @@
 from forms.article_form import ArticleForm, CategoryForm, LoginForm, RegistrationForm
 from models import db, Article, Category, User, Role
-from flask import Flask, render_template, redirect, url_for, flash
-from flask import request
+from flask import Flask, render_template, redirect, url_for, flash, request, session
 from flask_migrate import Migrate
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 from flask_admin import Admin, AdminIndexView
@@ -46,13 +45,9 @@ admin = Admin(app, index_view=MyAdminIndexView())
 
 # Создаем наследованный класс от ModelView для пользователей
 class UserAdmin(ModelView):
-    # Определяем поля, которые хотим отобразить в списке
     column_list = ('username', 'email', 'role')
-    # Добавляем фильтры поиска по этим полям
     column_searchable_list = ('username', 'email')
-    # Добавляем возможность фильтрации по ролям
     column_filters = ('role.name',)
-    # Включаем возможность редактирования поля role в форме редактирования
     form_columns = ('username', 'email', 'role')
 
 
@@ -61,6 +56,9 @@ class UserAdmin(ModelView):
 admin.add_view(UserAdmin(User, db.session))
 admin.add_view(ModelView(Role, db.session))
 admin.add_view(ModelView(Category, db.session))
+
+
+
 
 with app.app_context():
     db.create_all()
@@ -108,15 +106,18 @@ def trim_article_content(content, max_length=1500):
 def index():
     query = request.args.get('query')
     if query:
-        articles = Article.query.filter(Article.title.contains(query) | Article.content.contains(query)).all()
+        articles = Article.query.filter(
+            Article.title.contains(query) | Article.content.contains(query)
+        ).order_by(Article.date_posted.desc()).all()
     else:
-        articles = Article.query.all()
+        articles = Article.query.order_by(Article.date_posted.desc()).all()
 
     # Применяем функцию обрезки содержимого для каждой статьи
     for article in articles:
         article.trimmed_content, article.need_more_link = trim_article_content(article.content)
 
     return render_template('index.html', articles=articles)
+
 
 
 @app.route('/create_article', methods=['GET', 'POST'])
@@ -172,11 +173,25 @@ def article_detail(article_id):
 @login_required
 def add_category():
     form = CategoryForm()
+
+    # Получить URL предыдущей страницы из сессии, если он был сохранен
+    previous_page = session.get('previous_page')
+
     if form.validate_on_submit():
         category = Category(name=form.name.data)
         db.session.add(category)
         db.session.commit()
-        return redirect(url_for('index'))
+
+        # Если URL предыдущей страницы был сохранен в сессии, перенаправить на него
+        if previous_page:
+            return redirect(previous_page)
+        else:
+            # Если URL предыдущей страницы не найден, перенаправить на главную страницу, например
+            return redirect(url_for('index'))
+
+    # Сохранить текущий URL в сессии как предыдущий перед отображением формы
+    session['previous_page'] = request.url
+
     return render_template('add_category.html', form=form)
 
 

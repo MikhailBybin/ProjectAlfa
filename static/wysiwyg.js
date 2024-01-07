@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var quill = new Quill('#editor', {
         theme: 'snow',
         modules: {
+            syntax: true,
             toolbar: toolbarOptions,
             imageResize: {}
         }
@@ -43,6 +44,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+
+
+
     // Функция для преобразования содержимого Quill для подсветки синтаксиса Prism
     function convertQuillContentForPrism(content) {
         const activeButton = document.querySelector('.language-btn.active');
@@ -51,10 +55,26 @@ document.addEventListener('DOMContentLoaded', function() {
         return content.replace(/<pre class="ql-syntax" spellcheck="false">/g, `<pre class="line-numbers ${selectedLanguage}"><code class="${selectedLanguage}">`).replace(/<\/pre>/g, '</code></pre>').replace(/\n<\/code><\/pre>/g, '</code></pre>');
     }
 
+
+
     // Обработчик события отправки формы
     document.querySelector('#articleForm').addEventListener('submit', function(e) {
         var quillContent = quill.root.innerHTML;
         var convertedContent = convertQuillContentForPrism(quillContent);
         document.querySelector('#content').value = convertedContent;
     });
+
+    // document.querySelector('#articleForm').addEventListener('submit', function(e) {
+    // e.preventDefault(); // Предотвращение стандартной отправки формы
+    //
+    // var quillHtml = quill.root.innerHTML; // Получение HTML-контента из Quill
+    // var convertedForPrism = convertQuillContentForPrism(quillHtml); // Преобразование для Prism
+    // var formattedHtml = convertedForPrism.replace(/\n/g, '<br>'); // Замена переносов строк на <br>
+    // console.log(formattedHtml); // Вывод в консоль для проверки
+    //
+    // document.querySelector('#hiddenTextField').value = formattedHtml; // Установка значения скрытого поля
+    //
+    // this.submit(); // Отправка формы
+    // });
+
 });

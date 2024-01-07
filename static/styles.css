@@ -57,7 +57,7 @@ body {
 .navbar-login {
     position: absolute;
     right: 1%;
-    display: inline
+    display: inline;
     justify-content:space-around;
 }
 
@@ -83,9 +83,9 @@ body {
     text-decoration: none;
 }
 
-.container-left:{
+.container-left{
     position:absolute;
-    left:1;
+    left:1px;
     width:20%;
 }
 
@@ -155,7 +155,7 @@ mce-content-body pre code {
 
 .article-search button {
     padding: 5px 10px;
-    background-color: none;
+    background-color: transparent;
     color: #007BFF;
     border: none;
     border-radius: 5px;
