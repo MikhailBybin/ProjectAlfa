@@ -9,8 +9,6 @@
 {% else %}
     {% for article in articles %}
         <div class="article-card">
-        <!-- Заглушка для изображения в статье -->
-        <!-- <img src="{{ article.image_url }}" alt="{{ article.title }}"> -->
         <div class="article-card-header">
             <h3 class="article-card-title"><a href="{{ url_for('article_detail', article_id=article.id) }}">{{ article.title }}</a></h3>
 
@@ -29,7 +27,13 @@
     {% endif %}
   {% endif %}
         </div>
-        <p class="article-date">{{ article.date_posted.strftime('%Y-%m-%d') }}</p>
+ <p class="article-date"><b>{{ article.author.username }}</b> {{ article.date_posted.strftime('%Y-%m-%d') }}</p>
+   {% for category in categories %}
+   {% if category.name == article.category.name %}
+   <a href="{{ url_for('category', category_name=category.name) }}" class="category-name-card">{{ article.category.name }}</a>
+   {% endif %}
+   {% endfor %}
+
             <p>{{ article.content|safe }}</p>
         </div>
     {% endfor %}

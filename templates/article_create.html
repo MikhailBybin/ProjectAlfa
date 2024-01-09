@@ -1,38 +1,50 @@
 {% extends "article_create_layout.html" %}
-
 {% block content %}
-<div class="article-card">
 <h2>Создать статью</h2>
 <form method="post" id="articleForm">
-    {{ form.hidden_tag() }}
-
-    <p>{{ form.title.label }}<br>
-       {{ form.title() }}</p>
-
-
-    <p>{{ form.content.label }}<br>
-       <textarea id="content" name="content" hidden>{{ form.content.data }}</textarea>
-    <div id="languageButtons">
-        <button type="button" class="language-btn" data-language="language-javascript">JavaScript</button>
-        <button type="button" class="language-btn" data-language="language-python">Python</button>
-        <button type="button" class="language-btn" data-language="language-dax">DAX</button>
-        <button type="button" class="language-btn" data-language="language-sql">SQL</button>
-    </div>
-
-<!-- Скрытое поле для хранения выбранного языка -->
-<input type="hidden" id="selectedLanguage" name="language">
-       <div id="editor" style="min-height:300px;"></div>
-    </p>
-
-
-    <p>{{ form.category.label }}<br>
-       {{ form.category() }}</p>
-    {% if current_user.is_authenticated and current_user.role.name in ['Администратор', 'Редактор'] %}
-    <a href="{{ url_for('add_category') }}"><i class="fa-solid fa-plus"></i> Добавить категорию</a>
-    {% endif %}
-
-    <p>{{ form.submit() }}</p>
+   {{ form.hidden_tag() }}
+   <div class="article-create-title-card">
+      <div class="article-create-title-content">
+         <p class="article-create-title-text">Введите название статьи в форму ниже. Но не увлекайтесь, оно не должно быть слишком длинным. Желательно уместить его в одну строку.<br><b>Название статьи:</b></p>
+      </div>
+      <img src="{{ url_for('static', filename='img/article-crt-tooltips/article-name.jpg') }}" class="article-create-title-image">
+   </div>
+         <p>{{ form.title(placeholder="Введите название статьи...") }}</p>
+   <div class="article-create-content-card">
+      <div class="article-create-content-content">
+         <p class="article-create-content-text">Введите содержание статьи на ваш выбор. Вы можете добавлять изображения из буфера обмена с помощью <b>Ctrl+V</b><br><b>Содержание статьи:</b></p>
+      </div>
+      <img src="{{ url_for('static', filename='img/article-crt-tooltips/content-tooltip.jpg') }}" class="article-create-content-image">
+   </div>
+   <p>
+      <!-- Скрытое поле для хранения выбранного языка -->
+      <input type="hidden" id="selectedLanguage" name="language">
+      <textarea id="content" name="content" hidden>{{ form.content.data }}</textarea>
+   <div id="editor" style="min-height:300px;"></div>
+   <div class="article-create-syntax-card">
+      <div class="article-create-syntax-content">
+         <p class="article-create-syntax-text">Если в вашем тексте присутствует код (кнопка <b>'< / >'</b>),то обязательно выберите один из языков ниже. Вы можете выбрать и подсвечивать синтаксис только для одного языка. <br><b>Язык подсветки синтаксиса:</b></p>
+      </div>
+      <img src="{{ url_for('static', filename='img/article-crt-tooltips/syntax-code.jpg') }}" class="article-create-syntax-image">
+   </div>
+   <div class="language-container">
+      <div id="languageButtons">
+         <button type="button" class="language-btn" data-language="language-javascript match-braces">JavaScript</button>
+         <button type="button" class="language-btn" data-language="language-python match-braces">Python</button>
+         <button type="button" class="language-btn" data-language="language-dax match-braces">DAX</button>
+         <button type="button" class="language-btn" data-language="language-sql match-braces">SQL</button>
+         <button type="button" class="language-btn" data-language="language-powerquery match-braces">Power Query</button>
+          <button type="button" class="language-btn" data-language="language-treeview match-braces">Treeview</button>
+      </div>
+   </div>
+   </p>
+   <p>{{ form.category.label }}<br>
+      {{ form.category() }}
+   </p>
+   {% if current_user.is_authenticated and current_user.role.name in ['Администратор', 'Редактор'] %}
+   <a href="{{ url_for('add_category') }}" class="create-category-btn-big"><i class="fa-solid fa-plus"></i> Добавить категорию</a>
+   {% endif %}
+   <br>
+   <p>{{ form.submit() }}</p>
 </form>
-</div>
-
 {% endblock %}

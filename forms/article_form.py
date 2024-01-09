@@ -5,9 +5,9 @@ from wtforms.validators import DataRequired, Email, EqualTo
 
 
 class ArticleForm(FlaskForm):
-    title = StringField('Заголовок', validators=[DataRequired()])
+    title = StringField('Название статьи', validators=[DataRequired()])
     content = TextAreaField('Содержание')
-    category = SelectField('Категория', coerce=int)
+    category = SelectField('Категория:', coerce=int)
     submit = SubmitField('Сохранить')
 
     def __init__(self, *args, **kwargs):
@@ -22,13 +22,13 @@ class CategoryForm(FlaskForm):
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Login')
+    password = PasswordField('Пароль', validators=[DataRequired()])
+    submit = SubmitField('Войти')
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
+    username = StringField('Никнейм', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    confirm = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Register')
+    password = PasswordField('Пароль', validators=[DataRequired()])
+    confirm = PasswordField('Подтверждение пароля', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Зарегистрироваться')

@@ -1,5 +1,19 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class="welcome-card">
+   <div class="welcome-content">
+      <h3 class="welcome-text">Добро пожаловать в библиотеку знаний Mighty BI{% if current_user.is_authenticated %}, {{ current_user.username}}{% endif %}!</h3>
+      {% if current_user.is_authenticated %}
+      <a href="{{ url_for('create_article') }}" class="create-article-btn-big">Добавить статью</a>
+      {% else %}
+      <div class="login-buttons-container">
+         <a class="login-buttons-big" href="{{ url_for('login') }}">Войдите</a>
+         <a class="login-buttons-big" href="{{ url_for('register') }}">Зарегистрируйтесь</a>
+      </div>
+      {% endif %}
+   </div>
+   <img src="{{ url_for('static', filename='img/welcome2.jpg') }}" class="welcome-image">
+</div>
 {% for article in articles %}
 <div class="article-card">
    <div class="article-card-header">
@@ -19,8 +33,15 @@
       {% endif %}
       {% endif %}
    </div>
-   <p class="article-date"><b>{{ article.author.username }}</b> {{ article.date_posted.strftime('%Y-%m-%d') }}</p>
-   <p>Категория: {{ article.category.name }}</p>
+   <div class="article-author-date">
+      <div class="article-author">{{ article.author.username }}</div>
+      <div class="article-date">{{ article.date_posted.strftime('%Y-%m-%d') }}</div>
+   </div>
+   {% for category in categories %}
+   {% if category.name == article.category.name %}
+   <a href="{{ url_for('category', category_name=category.name) }}" class="category-name-card">{{ article.category.name }}</a>
+   {% endif %}
+   {% endfor %}
    <div class="article-card-content">
       <p>{{ article.trimmed_content | safe }}</p>
       {% if article.need_more_link %}

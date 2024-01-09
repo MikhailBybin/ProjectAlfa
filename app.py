@@ -268,7 +268,7 @@ def register():
 def category(category_name):
     category = Category.query.filter_by(name=category_name).first_or_404()
     articles = Article.query.filter_by(category=category).all()
-    return render_template('index.html', articles=articles)
+    return render_template('search_results.html', articles=articles, category=category)
 
 
 @app.context_processor

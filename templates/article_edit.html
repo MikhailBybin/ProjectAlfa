@@ -12,16 +12,25 @@
 
     <p>{{ form.content.label }}<br>
 
-
-        <div id="languageButtons">
-            <button type="button" class="language-btn" data-language="language-javascript">JavaScript</button>
-            <button type="button" class="language-btn" data-language="language-python">Python</button>
-            <button type="button" class="language-btn" data-language="language-dax">DAX</button>
-            <button type="button" class="language-btn" data-language="language-sql">SQL</button>
-        </div>
         <div id="editor" style="min-height:300px;">{{ form.content.data|safe }}</div>
         <textarea id="content" name="content" hidden></textarea>
+    <div class="article-create-syntax-card">
+      <div class="article-create-syntax-content">
+         <p class="article-create-syntax-text">Если в вашем тексте присутствует код (кнопка <b>'< / >'</b>),то обязательно выберите один из языков ниже. Вы можете выбрать и подсвечивать синтаксис только для одного языка. <br><b>Язык подсветки синтаксиса:</b></p>
+      </div>
+      <img src="{{ url_for('static', filename='img/article-crt-tooltips/syntax-code.jpg') }}" class="article-create-syntax-image">
+   </div>
+    <div class="language-container">
+       <div id="languageButtons">
+          <button type="button" class="language-btn" data-language="language-javascript match-braces">JavaScript</button>
+         <button type="button" class="language-btn" data-language="language-python match-braces">Python</button>
+         <button type="button" class="language-btn" data-language="language-dax match-braces">DAX</button>
+         <button type="button" class="language-btn" data-language="language-sql match-braces">SQL</button>
+         <button type="button" class="language-btn" data-language="language-powerquery match-braces">Power Query</button>
+          <button type="button" class="language-btn" data-language="language-treeview match-braces">Treeview</button>
 
+       </div>
+    </div>
     </p>
 
     <p>{{ form.category.label }}<br>

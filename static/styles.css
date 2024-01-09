@@ -61,12 +61,29 @@ body {
     justify-content:space-around;
 }
 
+.login-buttons-container{
+    display: inline-block;
+}
+
 .login-buttons{
     margin-left: 5px!important;
     display: inline-block;
     padding: 4px 10px 4px 10px;
-    background-color: #f0f0f0;
+    background-color: none;
     color: #5498e2;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-buttons-big {
+    width: fit-content;
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -171,7 +188,7 @@ mce-content-body pre code {
     display: inline-block;
     margin-top: 5px;
     padding: 4px 10px 4px 10px;
-    background-color: #f0f0f0;
+    background-color: none;
     color: #28a745;
     border: none;
     border-radius: 5px;
@@ -179,21 +196,52 @@ mce-content-body pre code {
     transition: background-color 0.3s;
 }
 
-.create-article-btn:hover{
+.create-article-btn:hover {
+    background-color: #1f7a33;
+    animation-iteration-count: infinite;
     text-decoration: none;
 }
 
+.create-article-btn-big {
+    width: fit-content;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.create-category-btn-big{
+    margin: 15px 0 15px 0;
+    padding: 5px 5px 5px 5px;
+    background-color: transparent;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.language-container{
+    position:relative;
+    background-color: #f7d890;
+}
 
 #languageButtons {
-    display: flex;
-    border: 1px solid #ddd;
+    position: relative;
+    left: 120px;
+    border: 0px solid #ddd;
+
 }
 
 .language-btn {
     margin: 2px 5px 2px 2px;
     padding: 3px 10px;
-    border: 1px solid #ddd;
-    background-color: #fff;
+    border: 0px solid #ddd;
+    background-color: #f7d890;
     cursor: pointer;
 }
 
@@ -206,33 +254,173 @@ mce-content-body pre code {
     color: #06c;
 }
 
-
-.create-article-btn:hover {
-    background-color: #1f7a33;
-    animation-iteration-count: infinite;
-}
-
 .login-card {
     max-width: 27%;
     margin: 0 auto;
     padding: 15px;
-    border: 1px solid #e2e2e2;
-    border-radius: 5px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s;
 }
+
+/* Карточка приветствия на главной странице */
+.welcome-card {
+    position: relative;
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
+    transition: box-shadow 0.3s;
+    background-color: #171431;
+    color: white;
+    overflow: hidden;
+    min-height: 165px;
+}
+
+.welcome-content{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding; 40px 0 32px 42px;
+}
+
+.welcome-text{
+    width: 50%;
+    min-width: 365px;
+}
+
+.welcome-image{
+    position: absolute;
+    border-radius: 10px;
+    top: 0;
+    right: 0px;
+    width: 185px;
+    height: 185px;
+}
+/* Конец карточки приветствия на главной странице */
+
+/* Подсказка для создания статьи - название */
+.article-create-title-card {
+    position: relative;
+    margin: 15px 0 5px 0;
+    padding: 15px;
+    border: 5px solid transparent;
+    border-radius: 5px;
+    transition: box-shadow 0.3s;
+    background-color: white;
+    color: black;
+    overflow: hidden;
+    min-height: 110px;
+}
+
+.article-create-title-content{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding; 40px 0 32px 42px;
+}
+
+.article-create-title-text{
+    position: absolute;
+    left: 120px;
+    width: 80%;
+    min-width: 365px;
+}
+
+.article-create-title-image{
+    position: absolute;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+}
+/* Конец подсказки для создания статьи - название */
+
+/* Подсказка для создания статьи - содержание */
+.article-create-content-card {
+    position: relative;
+    margin: 15px 0 5px 0;
+    padding: 15px;
+    border: 5px solid transparent;
+    border-radius: 5px;
+    transition: box-shadow 0.3s;
+    background-color: white;
+    color: black;
+    overflow: hidden;
+    min-height: 110px;
+}
+
+.article-create-content-content{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding; 40px 0 32px 42px;
+}
+
+.article-create-content-text{
+    position: absolute;
+    left: 120px;
+    width: 80%;
+    min-width: 365px;
+}
+
+.article-create-content-image{
+    position: absolute;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+}
+/* Конец Подсказка для создания статьи - содержание */
+
+/* Подсказка для создания статьи - синтаксис */
+.article-create-syntax-card {
+    position: relative;
+    margin: 15px 0 0px 0;
+    padding: 15px;
+    border: 5px solid transparent;
+    border-radius: 0px;
+    transition: box-shadow 0.3s;
+    background-color: #f7d890;
+    color: black;
+    overflow: hidden;
+    min-height: 100px;
+}
+
+.article-create-syntax-content{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding; 40px 0 32px 42px;
+}
+
+.article-create-syntax-text{
+    position: absolute;
+    left: 120px;
+    width: 80%;
+    min-width: 365px;
+}
+
+.article-create-syntax-image{
+    position: absolute;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+}
+/* Конец Подсказка для создания статьи - синтаксис */
 
 .article-card {
     margin-top: 15px;
     padding: 15px;
     border: 1px solid #e2e2e2;
     border-radius: 5px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s;
 }
 
 .article-card:hover {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .article-card-header {
@@ -251,7 +439,19 @@ mce-content-body pre code {
     gap: 10px;
 }
 
+.article-author-date {
+    display: flex;
+    flex-direction: row;
+}
+
+.article-author {
+    margin-right: 5px;
+    color: #aaa;
+    font-weight: normal;
+}
+
 .article-date {
+    right: 0;
     color: #aaa; /
     font-size: 0.8em;
     margin-bottom: 10px;
@@ -262,27 +462,37 @@ mce-content-body pre code {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    background-color: none;
     transition: background-color 0.3s;
 }
 
 .edit-article-btn {
-    background-color: #f8f9fa;
+    background-color: none;
     opacity: 80%;
     color: #000;
 }
 
 .edit-article-btn:hover, .delete-article-btn:hover {
-    background-color: #ffab00;
+    background-color: transparent;
     opacity: 100%;
 }
 
 .delete-article-btn {
+    background-color: transparent;
     opacity: 80%;
     color: #000;
 }
 
 a:hover {
     text-decoration:none;
+}
+
+.category-name-card{
+    padding: 2px 15px 2px 15px;
+    border-radius: 20px;
+    background-color: #DBEAFE;
+    color: #1E40AF;
+    width: fit-content;
 }
 
 /* Сброс стандартных стилей */
@@ -297,6 +507,22 @@ nav ul {
 
 nav li {
     flex: 1; /* каждый элемент занимает равное пространство */
+}
+
+input[id="title"] {
+    width:100%!important;
+    border: 1px solid #ccc;
+}
+
+input[id="submit"] {
+    margin: 15px 0 15px 0;
+    padding: 5px 5px 5px 5px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 
