@@ -17,12 +17,17 @@ document.addEventListener('DOMContentLoaded', function() {
       [{ 'font': [] }],
       [{ 'align': [] }],
 
+
       ['clean']                                         // remove formatting button
     ];
 
+
+
     // Инициализация Quill
     var quill = new Quill('#editor', {
-        theme: 'snow',
+        theme: 'bubble',
+        placeholder: 'Введите свой текст здесь...',
+        scrollingContainer: '#scrolling-container',
         modules: {
             syntax: true,
             toolbar: toolbarOptions,
@@ -31,6 +36,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
+
+    var customButton = document.createElement('button');
+    customButton.className = 'ql-myCustomButton';
+
+
+    var icon = document.createElement('i');
+    icon.className = 'fa-solid fa-scissors'; // Замените 'fa-icon-name' на нужное название иконки
+    customButton.appendChild(icon);
+
+    customButton.addEventListener('click', function() {
+      var range = quill.getSelection(true);
+      if (range) {
+        quill.insertText(range.index, '[конец превью]');
+      }
+    });
+
+    var spanContainer = document.createElement('span');
+    spanContainer.className = 'ql-formats';
+    spanContainer.appendChild(customButton);
+
+    var toolbar = quill.getModule('toolbar').container;
+    toolbar.appendChild(spanContainer);
+
+
+
+    // document.querySelector('.ql-toolbar').appendChild(customButton);
 
 
     // Инициализация обработчиков событий для кнопок выбора языка
@@ -43,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('active');
         });
     });
+
 
 
 

@@ -57,47 +57,22 @@ admin.add_view(UserAdmin(User, db.session))
 admin.add_view(ModelView(Role, db.session))
 admin.add_view(ModelView(Category, db.session))
 
-
-
-
 with app.app_context():
     db.create_all()
 
 
-def trim_article_content(content, max_length=1500):
-    if len(content) <= max_length:
-        return content, False  # Нет необходимости в кнопке "Читать далее"
+def trim_article_content(content):
+    # Ищем место тега [конец превью] в статье
+    preview_end_index = content.find('[конец превью]')
 
-    # Разделяем контент на блоки по тегам <pre> и <img>
-    parts = re.split('(<pre.*?>.*?</pre>)', content, flags=re.DOTALL)
-    trimmed_content = ""
-    current_length = 0
-    more_link_needed = False  # Флаг для определения необходимости кнопки "Читать далее"
-
-    for part in parts:
-        if '<pre' in part or '<img' in part:
-            # Если блок кода или изображение начинается до лимита, добавляем целиком
-            if current_length + len(part) <= max_length:
-                trimmed_content += part
-                current_length += len(part)
-            else:
-                # Если блок кода или изображение начинается внутри лимита, но заканчивается за его пределами,
-                # добавляем его целиком и прекращаем дальнейшее добавление
-                trimmed_content += part
-                more_link_needed = True
-                break
-        else:
-            # Добавляем текст до достижения лимита
-            if current_length + len(part) <= max_length:
-                trimmed_content += part
-                current_length += len(part)
-            else:
-                trimmed_content += part[:max_length - current_length]
-                more_link_needed = True
-                break
-
-    if more_link_needed:
-        trimmed_content += '...'  # Добавляем многоточие только если контент обрезан
+    if preview_end_index != -1:
+        # Обрезаем статью до этого места
+        trimmed_content = content[:preview_end_index]
+        more_link_needed = True
+    else:
+        # Если тег не найден, возвращаем полную статью
+        trimmed_content = content
+        more_link_needed = False
 
     return trimmed_content, more_link_needed
 
@@ -117,7 +92,6 @@ def index():
         article.trimmed_content, article.need_more_link = trim_article_content(article.content)
 
     return render_template('index.html', articles=articles)
-
 
 
 @app.route('/create_article', methods=['GET', 'POST'])
@@ -166,7 +140,18 @@ def search():
 @app.route('/article/<int:article_id>')
 def article_detail(article_id):
     article = Article.query.get_or_404(article_id)
-    return render_template('article_detail.html', article=article)
+    content_after_preview = get_content_after_preview(article.content)
+    return render_template('article_detail.html', article=article, content=content_after_preview)
+
+
+def get_content_after_preview(content):
+    preview_end_marker = '[конец превью]'
+    preview_end_index = content.find(preview_end_marker)
+
+    if preview_end_index != -1:
+        # Возвращает контент после маркера, включая текст после маркера
+        return content[preview_end_index + len(preview_end_marker):]
+    return content  # Если маркер не найден, возвращаем весь контент
 
 
 @app.route('/add_category', methods=['GET', 'POST'])

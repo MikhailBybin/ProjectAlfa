@@ -10,11 +10,11 @@ body {
     padding-top: 20px;
 }
 
-.logo{
+.logo {
     margin-right: 10px;
 }
 
-.header{
+.header {
     position: fixed;
     top: 0;
     left: 0;
@@ -23,7 +23,7 @@ body {
     background-color: #f8f9fa;
 }
 
-.header-nav{
+.header-nav {
     position:absolute;
     top:50px;
     width: 100%;
@@ -44,8 +44,8 @@ body {
     padding: 0 15px;
 }
 
-.navbar{
-    background-color: #f8f9fa!important;
+.navbar {
+    background-color: #f8f9fa !important;
     flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: center;
@@ -61,15 +61,15 @@ body {
     justify-content:space-around;
 }
 
-.login-buttons-container{
+.login-buttons-container {
     display: inline-block;
 }
 
-.login-buttons{
+.login-buttons {
     margin-left: 5px!important;
     display: inline-block;
     padding: 4px 10px 4px 10px;
-    background-color: none;
+    background-color: transparent;
     color: #5498e2;
     border: none;
     border-radius: 5px;
@@ -94,13 +94,13 @@ body {
     text-decoration: none;
 }
 
-.admin-panel-btn{
+.admin-panel-btn {
     position: relative;
     padding-left: 10px;
     text-decoration: none;
 }
 
-.container-left{
+.container-left {
     position:absolute;
     left:1px;
     width:20%;
@@ -116,7 +116,7 @@ pre.line-numbers {
     padding-left: 3.8em;
     counter-reset: linenumber;
     border-radius: 4px;
-    background-color: #f7f7f7
+    background-color: #f1f1f1
 }
 
 pre.line-numbers > code {
@@ -135,8 +135,8 @@ pre.line-numbers > code {
     margin-right: 10px;
     padding: 5px 10px;
     cursor: pointer;
-    background-color: #f7f7f7;
-    border: 1px solid #f7f7f7;
+    background-color: #f1f1f1;
+    border: 1px solid #f1f1f1;
     border-radius: 4px;
     font-size: 12px;
 }
@@ -153,7 +153,7 @@ mce-content-body pre code {
 }
 
 
-.article-date-search input{
+.article-date-search input {
     border: 1px solid #ccc;
 }
 
@@ -188,7 +188,7 @@ mce-content-body pre code {
     display: inline-block;
     margin-top: 5px;
     padding: 4px 10px 4px 10px;
-    background-color: none;
+    background-color: transparent;
     color: #28a745;
     border: none;
     border-radius: 5px;
@@ -214,7 +214,7 @@ mce-content-body pre code {
     transition: background-color 0.3s;
 }
 
-.create-category-btn-big{
+.create-category-btn-big {
     margin: 15px 0 15px 0;
     padding: 5px 5px 5px 5px;
     background-color: transparent;
@@ -225,7 +225,7 @@ mce-content-body pre code {
     transition: background-color 0.3s;
 }
 
-.language-container{
+.language-container {
     position:relative;
     background-color: #f7d890;
 }
@@ -275,19 +275,19 @@ mce-content-body pre code {
     min-height: 165px;
 }
 
-.welcome-content{
+.welcome-content {
     display:flex;
     flex-direction: column;
     justify-content: space-between;
-    padding; 40px 0 32px 42px;
+    padding: 10px 0 0 10px;
 }
 
-.welcome-text{
+.welcome-text {
     width: 50%;
     min-width: 365px;
 }
 
-.welcome-image{
+.welcome-image {
     position: absolute;
     border-radius: 10px;
     top: 0;
@@ -315,7 +315,6 @@ mce-content-body pre code {
     display:flex;
     flex-direction: column;
     justify-content: space-between;
-    padding; 40px 0 32px 42px;
 }
 
 .article-create-title-text{
@@ -349,21 +348,20 @@ mce-content-body pre code {
     min-height: 110px;
 }
 
-.article-create-content-content{
+.article-create-content-content {
     display:flex;
     flex-direction: column;
     justify-content: space-between;
-    padding; 40px 0 32px 42px;
 }
 
-.article-create-content-text{
+.article-create-content-text {
     position: absolute;
     left: 120px;
     width: 80%;
     min-width: 365px;
 }
 
-.article-create-content-image{
+.article-create-content-image {
     position: absolute;
     border-radius: 10px;
     top: 0;
@@ -387,21 +385,20 @@ mce-content-body pre code {
     min-height: 100px;
 }
 
-.article-create-syntax-content{
+.article-create-syntax-content {
     display:flex;
     flex-direction: column;
     justify-content: space-between;
-    padding; 40px 0 32px 42px;
 }
 
-.article-create-syntax-text{
+.article-create-syntax-text {
     position: absolute;
     left: 120px;
     width: 80%;
     min-width: 365px;
 }
 
-.article-create-syntax-image{
+.article-create-syntax-image {
     position: absolute;
     border-radius: 10px;
     top: 0;
@@ -415,12 +412,28 @@ mce-content-body pre code {
     margin-top: 15px;
     padding: 15px;
     border: 1px solid #e2e2e2;
+    background-color: #fff;
     border-radius: 5px;
     transition: box-shadow 0.3s;
 }
 
+.article-detail-card {
+    padding: 15px 15px 15px 15px;
+    background-color: #fff;
+}
+
+.article-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.article-card-content img {
+    max-width: 100%;
+    height: auto;
+}
+
 .article-card:hover {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);*/
 }
 
 .article-card-header {
@@ -462,12 +475,12 @@ mce-content-body pre code {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: none;
+    background-color: transparent;
     transition: background-color 0.3s;
 }
 
 .edit-article-btn {
-    background-color: none;
+    background-color: transparent;
     opacity: 80%;
     color: #000;
 }
@@ -487,7 +500,7 @@ a:hover {
     text-decoration:none;
 }
 
-.category-name-card{
+.category-name-card {
     padding: 2px 15px 2px 15px;
     border-radius: 20px;
     background-color: #DBEAFE;
@@ -525,16 +538,52 @@ input[id="submit"] {
     transition: background-color 0.3s;
 }
 
-
-/* Мобильное меню */
-@media (max-width: 600px) {
-    nav ul {
-        flex-direction: column; /* меню становится вертикальным */
-    }
-    nav a {
-        border-bottom: 1px solid #555; /* добавляем границу между элементами */
-    }
+div[id="editor"] {
+    border: 1px solid #ccc;
+    overflow-y: auto;
+    min-height: 100%;
+    height: 100%;
+    font-size: 18px;
 }
+
+/*#editor {*/
+/*  height: auto;*/
+/*  min-height: 100%;*/
+/*  padding: 50px;*/
+/*}*/
+/*#editor .ql-editor {*/
+/*  font-size: 18px;*/
+/*  overflow-y: visible; */
+/*}*/
+
+
+/*#scrolling-container {*/
+/*  height: 100%;*/
+/*  min-height: 100%;*/
+/*  overflow-y: auto;*/
+/*}*/
+
+.ql-editor {
+    min-height: 300px;
+}
+
+a {
+    color: #000;
+    opacity: 80%;
+
+}
+
+
+
+/*!* Мобильное меню *!*/
+/*@media (max-width: 600px) {*/
+/*    nav ul {*/
+/*        flex-direction: column; !* меню становится вертикальным *!*/
+/*    }*/
+/*    nav a {*/
+/*        border-bottom: 1px solid #555; !* добавляем границу между элементами *!*/
+/*    }*/
+/*}*/
 
 
 

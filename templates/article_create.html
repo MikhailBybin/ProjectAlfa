@@ -12,7 +12,7 @@
          <p>{{ form.title(placeholder="Введите название статьи...") }}</p>
    <div class="article-create-content-card">
       <div class="article-create-content-content">
-         <p class="article-create-content-text">Введите содержание статьи на ваш выбор. Вы можете добавлять изображения из буфера обмена с помощью <b>Ctrl+V</b><br><b>Содержание статьи:</b></p>
+         <p class="article-create-content-text">Введите содержание статьи на ваш выбор. Вы можете добавлять изображения из буфера обмена с помощью <b>Ctrl+V</b>. Чтобы воспользоваться панелью инструментов, выделите напечатанный текст с помощью <b>ПКМ</b><br><b>Содержание статьи:</b></p>
       </div>
       <img src="{{ url_for('static', filename='img/article-crt-tooltips/content-tooltip.jpg') }}" class="article-create-content-image">
    </div>
@@ -20,7 +20,9 @@
       <!-- Скрытое поле для хранения выбранного языка -->
       <input type="hidden" id="selectedLanguage" name="language">
       <textarea id="content" name="content" hidden>{{ form.content.data }}</textarea>
+    <div id="scrolling-container">
    <div id="editor" style="min-height:300px;"></div>
+    </div>
    <div class="article-create-syntax-card">
       <div class="article-create-syntax-content">
          <p class="article-create-syntax-text">Если в вашем тексте присутствует код (кнопка <b>'< / >'</b>),то обязательно выберите один из языков ниже. Вы можете выбрать и подсвечивать синтаксис только для одного языка. <br><b>Язык подсветки синтаксиса:</b></p>
