@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', function() {
 
 
@@ -92,11 +94,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // Обработчик события отправки формы
-    document.querySelector('#saveButton').addEventListener('click', function(e) {
-    e.preventDefault(); // Предотвращаем действие по умолчанию (в данном случае, отправку формы)
-    var quillContent = quill.root.innerHTML;
-    var convertedContent = convertQuillContentForPrism(quillContent);
-    document.querySelector('#content').value = convertedContent;
+    document.querySelector('#articleForm').addEventListener('submit', function(e) {
+        var quillContent = quill.root.innerHTML;
+        var convertedContent = convertQuillContentForPrism(quillContent);
+        document.querySelector('#content').value = convertedContent;
+
 
     // Теперь можно добавить код для отправки данных на сервер или другие необходимые действия
     });

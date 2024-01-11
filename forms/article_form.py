@@ -8,7 +8,7 @@ class ArticleForm(FlaskForm):
     title = StringField('Название статьи', validators=[DataRequired()])
     content = TextAreaField('Содержание')
     category = SelectField('Категория:', coerce=int)
-    submit = SubmitField('Сохранить', id='saveButton')
+    submit = SubmitField('Сохранить')
 
     def __init__(self, *args, **kwargs):
         super(ArticleForm, self).__init__(*args, **kwargs)
