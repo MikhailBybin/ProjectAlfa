@@ -19,7 +19,10 @@
        {% endif %}
        {% endif %}
     </div>
-    <p class="article-date"><b>{{ article.author.username }}</b> {{ article.date_posted.strftime('%Y-%m-%d') }}</p>
+   <div class="article-author-date">
+      <div class="article-author">{{ article.author.username }}</div>
+      <div class="article-date">{{ article.date_posted.strftime('%Y-%m-%d') }}</div>
+   </div>
        {% for category in categories %}
        {% if category.name == article.category.name %}
        <a href="{{ url_for('category', category_name=category.name) }}" class="category-name-card">{{ article.category.name }}</a>
@@ -29,5 +32,5 @@
        {{ content|safe }}
     </div>
 </div>
-<a class="login-buttons" href="{{ url_for('index') }}"><i class="fa-solid fa-arrow-left"></i> Вернуться на главную</a>
+<a class="back-buttons" href="{{ url_for('index') }}"><i class="fa-solid fa-arrow-left"></i> Вернуться на главную</a>
 {% endblock %}

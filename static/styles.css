@@ -6,7 +6,7 @@ body {
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color: #fff;
+    background-color: #f1f1f1;
     padding-top: 20px;
 }
 
@@ -66,7 +66,6 @@ body {
 }
 
 .login-buttons {
-    margin-left: 5px!important;
     display: inline-block;
     padding: 4px 10px 4px 10px;
     background-color: transparent;
@@ -92,6 +91,29 @@ body {
 
 .login-buttons:hover {
     text-decoration: none;
+}
+
+.read-nxt-buttons {
+    display: inline-block;
+    padding: 4px 10px 4px 10px;
+    background-color: transparent;
+    color: #5498e2;
+    border: 1px solid #5498e2;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.back-buttons {
+    margin: 10px 0 10px 0;
+    display: inline-block;
+    padding: 4px 10px 4px 10px;
+    background-color: transparent;
+    color: #5498e2;
+    border: 1px solid #5498e2;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .admin-panel-btn {
@@ -145,7 +167,7 @@ pre.line-numbers > code {
     background-color: #e1e1e1;
 }
 
-mce-content-body pre code {
+.mce-content-body pre code {
     background-color: #f5f5f5;
     border: 1px solid #ddd;
     padding: 10px;
@@ -311,6 +333,10 @@ mce-content-body pre code {
     min-height: 110px;
 }
 
+.article-create-title-card.collapsed {
+    display: none;
+}
+
 .article-create-title-content{
     display:flex;
     flex-direction: column;
@@ -408,6 +434,38 @@ mce-content-body pre code {
 }
 /* Конец Подсказка для создания статьи - синтаксис */
 
+.article-card-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.article-author-date {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.article-author {
+    margin-right: 5px;
+    color: #000;
+    font-weight: inherit;
+    font-size: 14px;
+}
+
+.article-date {
+    right: 0;
+    color: #aaa; /
+    font-weight: inherit;
+    font-size: 14px;
+}
+
+.category-name-card {
+    padding-left: 20px;
+    font-size: 14px;
+    color: #1E40AF;
+    width: fit-content;
+}
+
 .article-card {
     margin-top: 15px;
     padding: 15px;
@@ -427,6 +485,10 @@ mce-content-body pre code {
     height: auto;
 }
 
+.article-card-content {
+    padding: 5px 20px 5px 20px;
+}
+
 .article-card-content img {
     max-width: 100%;
     height: auto;
@@ -440,34 +502,12 @@ mce-content-body pre code {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-left: 20px;
 }
 
 .article-card-title {
     margin: 0;
     font-size: 24px;
-}
-
-.article-card-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.article-author-date {
-    display: flex;
-    flex-direction: row;
-}
-
-.article-author {
-    margin-right: 5px;
-    color: #aaa;
-    font-weight: normal;
-}
-
-.article-date {
-    right: 0;
-    color: #aaa; /
-    font-size: 0.8em;
-    margin-bottom: 10px;
 }
 
 .edit-article-btn, .delete-article-btn {
@@ -500,14 +540,6 @@ a:hover {
     text-decoration:none;
 }
 
-.category-name-card {
-    padding: 2px 15px 2px 15px;
-    border-radius: 20px;
-    background-color: #DBEAFE;
-    color: #1E40AF;
-    width: fit-content;
-}
-
 /* Сброс стандартных стилей */
 nav ul {
     list-style-type: none;
@@ -523,8 +555,14 @@ nav li {
 }
 
 input[id="title"] {
+    margin-top: 10px;
     width:100%!important;
     border: 1px solid #ccc;
+    background-color: #fff;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    /*font-style: italic;*/
+    color: rgba(0,0,0,0.6);
 }
 
 input[id="submit"] {
@@ -538,13 +576,27 @@ input[id="submit"] {
     transition: background-color 0.3s;
 }
 
+input[id="saveButton"] {
+    margin: 15px 0 15px 0;
+    padding: 5px 5px 5px 5px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
 div[id="editor"] {
     border: 1px solid #ccc;
-    overflow-y: auto;
-    min-height: 100%;
-    height: 100%;
     font-size: 18px;
 }
+
+.collapsed {
+    display:none;
+    transition: max-height 0.3s ease;
+}
+
 
 /*#editor {*/
 /*  height: auto;*/
@@ -565,12 +617,11 @@ div[id="editor"] {
 
 .ql-editor {
     min-height: 300px;
+    background-color: #fff;
 }
 
 a {
     color: #000;
-    opacity: 80%;
-
 }
 
 

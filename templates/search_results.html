@@ -27,14 +27,21 @@
     {% endif %}
   {% endif %}
         </div>
- <p class="article-date"><b>{{ article.author.username }}</b> {{ article.date_posted.strftime('%Y-%m-%d') }}</p>
+ <div class="article-author-date">
+      <div class="article-author">{{ article.author.username }}</div>
+      <div class="article-date">{{ article.date_posted.strftime('%Y-%m-%d') }}</div>
+   </div>
    {% for category in categories %}
    {% if category.name == article.category.name %}
    <a href="{{ url_for('category', category_name=category.name) }}" class="category-name-card">{{ article.category.name }}</a>
    {% endif %}
    {% endfor %}
-
-            <p>{{ article.content|safe }}</p>
+        <div class="article-card-content">
+              <p>{{ article.trimmed_content | safe }}</p>
+              {% if article.need_more_link %}
+              <a class="login-buttons" href="{{ url_for('article_detail', article_id=article.id) }}">Читать далее </a>
+              {% endif %}
+           </div>
         </div>
     {% endfor %}
 {% endif %}

@@ -1,18 +1,21 @@
 {% extends "article_create_layout.html" %}
 {% block content %}
-<h2>Создать статью</h2>
+
+<div class="article-card">
 <form method="post" id="articleForm">
    {{ form.hidden_tag() }}
-   <div class="article-create-title-card">
-      <div class="article-create-title-content">
-         <p class="article-create-title-text">Введите название статьи в форму ниже. Но не увлекайтесь, оно не должно быть слишком длинным. Желательно уместить его в одну строку.<br><b>Название статьи:</b></p>
+    <i class="toggleButton fa-regular fa-circle-question" title="Нажмите, чтобы отобразить справку"> <b>Заголовок</b></i>
+   <div class="article-create-title-card collapsed">
+      <div  class="article-create-title-content">
+         <p class="article-create-title-text">Введите название статьи в форму ниже. Но не увлекайтесь, оно не должно быть слишком длинным. Желательно уместить его в одну строку.</p>
       </div>
       <img src="{{ url_for('static', filename='img/article-crt-tooltips/article-name.jpg') }}" class="article-create-title-image">
    </div>
          <p>{{ form.title(placeholder="Введите название статьи...") }}</p>
-   <div class="article-create-content-card">
+   <i class="toggleButton fa-regular fa-circle-question" title="Нажмите, чтобы отобразить справку"> <b>Содержание</b></i>
+   <div class="article-create-content-card collapsed">
       <div class="article-create-content-content">
-         <p class="article-create-content-text">Введите содержание статьи на ваш выбор. Вы можете добавлять изображения из буфера обмена с помощью <b>Ctrl+V</b>. Чтобы воспользоваться панелью инструментов, выделите напечатанный текст с помощью <b>ПКМ</b><br><b>Содержание статьи:</b></p>
+         <p class="article-create-content-text">Введите содержание статьи на ваш выбор. Вы можете добавлять изображения из буфера обмена с помощью <b>Ctrl+V</b>. Чтобы воспользоваться панелью инструментов, выделите напечатанный текст с помощью <b>ПКМ</b></p>
       </div>
       <img src="{{ url_for('static', filename='img/article-crt-tooltips/content-tooltip.jpg') }}" class="article-create-content-image">
    </div>
@@ -49,4 +52,5 @@
    <br>
    <p>{{ form.submit() }}</p>
 </form>
+</div>
 {% endblock %}

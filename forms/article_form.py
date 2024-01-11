@@ -1,14 +1,14 @@
 from flask_wtf import FlaskForm
 from models import Category
 from wtforms import StringField, PasswordField, SubmitField, TextAreaField, SelectField
-from wtforms.validators import DataRequired, Email, EqualTo
+from wtforms.validators import DataRequired, EqualTo
 
 
 class ArticleForm(FlaskForm):
     title = StringField('Название статьи', validators=[DataRequired()])
     content = TextAreaField('Содержание')
     category = SelectField('Категория:', coerce=int)
-    submit = SubmitField('Сохранить')
+    submit = SubmitField('Сохранить', id='saveButton')
 
     def __init__(self, *args, **kwargs):
         super(ArticleForm, self).__init__(*args, **kwargs)

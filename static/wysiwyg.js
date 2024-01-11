@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+
+
     var toolbarOptions = [
       ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
       ['blockquote', 'code-block'],
@@ -16,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
       [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
       [{ 'font': [] }],
       [{ 'align': [] }],
+
 
 
       ['clean']                                         // remove formatting button
@@ -36,13 +39,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-
     var customButton = document.createElement('button');
     customButton.className = 'ql-myCustomButton';
 
 
     var icon = document.createElement('i');
-    icon.className = 'fa-solid fa-scissors'; // Замените 'fa-icon-name' на нужное название иконки
+    icon.className = 'fa-solid fa-scissors';
     customButton.appendChild(icon);
 
     customButton.addEventListener('click', function() {
@@ -90,23 +92,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // Обработчик события отправки формы
-    document.querySelector('#articleForm').addEventListener('submit', function(e) {
-        var quillContent = quill.root.innerHTML;
-        var convertedContent = convertQuillContentForPrism(quillContent);
-        document.querySelector('#content').value = convertedContent;
+    document.querySelector('#saveButton').addEventListener('click', function(e) {
+    e.preventDefault(); // Предотвращаем действие по умолчанию (в данном случае, отправку формы)
+    var quillContent = quill.root.innerHTML;
+    var convertedContent = convertQuillContentForPrism(quillContent);
+    document.querySelector('#content').value = convertedContent;
+
+    // Теперь можно добавить код для отправки данных на сервер или другие необходимые действия
     });
 
-    // document.querySelector('#articleForm').addEventListener('submit', function(e) {
-    // e.preventDefault(); // Предотвращение стандартной отправки формы
-    //
-    // var quillHtml = quill.root.innerHTML; // Получение HTML-контента из Quill
-    // var convertedForPrism = convertQuillContentForPrism(quillHtml); // Преобразование для Prism
-    // var formattedHtml = convertedForPrism.replace(/\n/g, '<br>'); // Замена переносов строк на <br>
-    // console.log(formattedHtml); // Вывод в консоль для проверки
-    //
-    // document.querySelector('#hiddenTextField').value = formattedHtml; // Установка значения скрытого поля
-    //
-    // this.submit(); // Отправка формы
-    // });
+    
 
 });
