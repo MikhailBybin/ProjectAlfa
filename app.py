@@ -52,7 +52,6 @@ class UserAdmin(ModelView):
 
 
 # Регистрируем нашу настроенную вьюху в админ-панели
-
 admin.add_view(UserAdmin(User, db.session))
 admin.add_view(ModelView(Role, db.session))
 admin.add_view(ModelView(Category, db.session))
